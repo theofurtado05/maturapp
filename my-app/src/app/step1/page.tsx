@@ -29,7 +29,7 @@ export default function MobileApp() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-red-50">
+    <div className="flex flex-col h-screen max-h-[89vh] bg-red-50">
       {/* Barra superior */}
       <header className="bg-red-600 text-white p-4 flex items-center">
         <Button 
