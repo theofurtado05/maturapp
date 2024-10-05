@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowLeft, Home, User, BarChart, Settings } from 'lucide-react'
+import Menu from '../_components/menu'
+import Header from '../_components/header'
 
 const areas = [
   { value: 'comercial', label: 'Comercial', icon: '💼' },
@@ -23,30 +25,17 @@ export default function MobileApp() {
     // Aqui você implementaria a lógica para avançar para a próxima tela
   }
 
-  const onBack = () => {
-    console.log('Voltar')
-    // Aqui você implementaria a lógica para voltar à tela anterior
-  }
+  
 
   return (
     <div className="flex flex-col h-screen max-h-[89vh] bg-red-50">
       {/* Barra superior */}
-      <header className="bg-red-600 text-white p-4 flex items-center">
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          onClick={onBack} 
-          className="mr-2 text-white hover:bg-red-500 rounded-full"
-        >
-          <ArrowLeft className="h-6 w-6" />
-        </Button>
-        <h1 className="text-xl font-bold flex-1 text-center">MaturApp</h1>
-      </header>
+      <Header/>
 
       {/* Conteúdo principal */}
       <main className="flex-1 overflow-y-auto p-4">
         <Card className="w-full rounded-3xl shadow-lg overflow-hidden">
-          <CardHeader className="bg-red-600 text-white p-6">
+          <CardHeader className="bg-primary text-white p-6">
             <CardTitle className="text-2xl font-bold text-center">Perfil da Empresa</CardTitle>
           </CardHeader>
           <CardContent className="p-6 space-y-6">
@@ -61,8 +50,8 @@ export default function MobileApp() {
                       onClick={() => setSelectedArea(area.value)}
                       className={`p-4 text-left flex items-center justify-start space-x-2 rounded-2xl transition-colors ${
                         selectedArea === area.value
-                          ? 'bg-red-600 text-white'
-                          : 'bg-white text-gray-700 border-2 border-red-200 hover:bg-red-100'
+                          ? 'bg-primary text-white'
+                          : 'bg-white text-gray-700 border-2 border-primary hover:bg-primary'
                       }`}
                     >
                       <span className="text-2xl">{area.icon}</span>
@@ -78,7 +67,7 @@ export default function MobileApp() {
                       setCustomArea(e.target.value)
                       setSelectedArea('')
                     }}
-                    className="w-full p-4 bg-white border-2 border-red-200 rounded-2xl focus:ring-red-500 focus:border-red-500 placeholder-gray-400"
+                    className="w-full p-4 bg-white border-2 border-primary rounded-2xl focus:ring-primary focus:border-primary placeholder-primary"
                   />
                   <span className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                     <svg className="h-5 w-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -87,7 +76,7 @@ export default function MobileApp() {
                   </span>
                 </div>
                 <Button 
-                  className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-4 rounded-2xl transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                  className="w-full bg-primary hover:bg-primary text-white font-semibold py-4 rounded-2xl transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
                   type="submit"
                 >
                   Continuar
@@ -97,28 +86,8 @@ export default function MobileApp() {
           </CardContent>
         </Card>
       </main>
-
       {/* Barra de navegação inferior */}
-      <nav className="bg-white border-t border-red-200">
-        <div className="flex justify-around">
-          <Button variant="ghost" className="flex-1 py-4 text-red-600 hover:bg-red-50">
-            <Home className="h-6 w-6" />
-            <span className="sr-only">Início</span>
-          </Button>
-          <Button variant="ghost" className="flex-1 py-4 text-red-600 hover:bg-red-50">
-            <User className="h-6 w-6" />
-            <span className="sr-only">Perfil</span>
-          </Button>
-          <Button variant="ghost" className="flex-1 py-4 text-red-600 hover:bg-red-50">
-            <BarChart className="h-6 w-6" />
-            <span className="sr-only">Relatórios</span>
-          </Button>
-          <Button variant="ghost" className="flex-1 py-4 text-red-600 hover:bg-red-50">
-            <Settings className="h-6 w-6" />
-            <span className="sr-only">Configurações</span>
-          </Button>
-        </div>
-      </nav>
+      <Menu/>
     </div>
   )
 }

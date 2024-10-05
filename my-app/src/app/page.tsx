@@ -48,10 +48,10 @@ export default function Home() {
                     placeholder="seu@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10 pr-4 py-2 w-full border-2 border-primary/30 rounded-xl focus:ring-red-500 focus:border-red-500"
+                    className="pl-10 pr-4 py-2 w-full border-2 border-primary/30 rounded-xl focus:ring-primary focus:border-primary"
                     
                   />
-                  <MailIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-red-500 h-5 w-5" />
+                  <MailIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5" />
                 </div>
               </div>
               <div className="space-y-2">
@@ -65,10 +65,10 @@ export default function Home() {
                     placeholder="Sua senha"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10 pr-12 py-2 w-full border-2 border-primary/30 rounded-xl focus:ring-red-500 focus:border-red-500"
+                    className="pl-10 pr-12 py-2 w-full border-2 border-primary/30 rounded-xl focus:ring-primary focus:border-primary"
                     
                   />
-                  <LockIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-red-500 h-5 w-5" />
+                  <LockIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5" />
                   <Button
                     type="button"
                     variant="ghost"
@@ -77,9 +77,9 @@ export default function Home() {
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? (
-                      <EyeOffIcon className="h-5 w-5 text-red-500" />
+                      <EyeOffIcon className="h-5 w-5 text-primary" />
                     ) : (
-                      <EyeIcon className="h-5 w-5 text-red-500" />
+                      <EyeIcon className="h-5 w-5 text-primary" />
                     )}
                   </Button>
                 </div>
@@ -87,7 +87,7 @@ export default function Home() {
               
                 <Button 
                   onClick={()=>{window.location.href = '/step1'}}
-                  className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-xl transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                  className="w-full bg-primary hover:bg-primary text-white font-semibold py-2 rounded-xl transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
                 >
                   Entrar
                 </Button>
@@ -97,7 +97,7 @@ export default function Home() {
               <Button
                 variant="link"
                 onClick={onForgotPassword}
-                className="w-full text-red-600 hover:text-red-700"
+                className="w-full text-primary hover:text-primary"
               >
                 Esqueceu sua senha?
               </Button>
