@@ -33,7 +33,7 @@ export default function Home() {
       <main className="flex-1 flex items-center justify-center p-4">
         <Card className="w-full max-w-md rounded-3xl shadow-lg overflow-hidden">
           <CardHeader className="bg-primary text-white p-6">
-            <CardTitle className="text-2xl font-bold text-center">MaturApp</CardTitle>
+            <CardTitle className="text-2xl font-bold text-center">Peak Proccess</CardTitle>
           </CardHeader>
           <CardContent className="p-6 space-y-6">
             <form onSubmit={onLogin} className="space-y-4">
