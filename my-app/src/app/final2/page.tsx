@@ -46,12 +46,12 @@ export default function NextStepsScreen() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-red-50">
+    <div className="flex flex-col h-full min-h-screen pb-16 bg-red-50">
       {/* Barra superior */}
       <Header/>
 
       {/* Conteúdo principal */}
-      <main className="flex-1 overflow-y-auto p-4">
+      <main className="flex-1 overflow-y-auto p-4 pb-16">
         <Card className="w-full rounded-3xl shadow-lg overflow-hidden">
           <CardHeader className="bg-primary text-white p-6">
             <CardTitle className="text-2xl font-bold text-center">Próximos Passos</CardTitle>

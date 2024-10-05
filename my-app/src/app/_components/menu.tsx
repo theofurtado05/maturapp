@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Menu(){
     return (
-        <nav className="absolute bottom-0 w-full bg-white border-t border-red-200">
+        <nav className="fixed bottom-0 w-full bg-white border-t border-red-200">
         <div className="flex justify-around">
           <Button onClick={()=>{
             window.location.href = '/step1'

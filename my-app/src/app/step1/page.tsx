@@ -42,7 +42,7 @@ export default function MobileApp() {
             <form onSubmit={(e) => { e.preventDefault(); onContinue(selectedArea || customArea); }}>
               <div className="space-y-4">
                 <p className="text-lg font-medium text-gray-700">Qual área da empresa será avaliada?</p>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4">
                   {areas.map((area) => (
                     <Button
                       key={area.value}
