@@ -76,14 +76,15 @@ const questions = [
   }
 ];
 
-
 export default function SpecificQuestionsScreen() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState({})
 
-  //@ts-ignore
-  const onAnswer = (value) => {
+  const onAnswer = (value: string) => {
     setAnswers({ ...answers, [questions[currentQuestion].id]: value })
+  }
+
+  const onNext = () => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1)
     } else {
@@ -95,8 +96,6 @@ export default function SpecificQuestionsScreen() {
   const onBack = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1)
-    } else {
-      console.log('Voltar para a tela anterior')
     }
   }
 
@@ -119,7 +118,7 @@ export default function SpecificQuestionsScreen() {
               <RadioGroup
                 onValueChange={onAnswer}
                 //@ts-ignore
-                value={answers[questions[currentQuestion].id]}
+                value={answers[questions[currentQuestion].id] || ""}
               >
                 {questions[currentQuestion].options.map((option) => (
                   <div key={option.value} className="flex items-center space-x-2 p-2">
@@ -148,8 +147,8 @@ export default function SpecificQuestionsScreen() {
                 </Button>
                 <Button 
                   className="bg-primary hover:bg-primary text-white font-semibold py-4 px-4 rounded-2xl transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
-                  //@ts-ignore
-                  onClick={() => onAnswer(answers[questions[currentQuestion].id])}
+                  onClick={onNext}
+
                   //@ts-ignore
                   disabled={!answers[questions[currentQuestion].id]}
                 >
