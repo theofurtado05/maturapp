@@ -18,8 +18,8 @@ const userData = {
 
 // Simulated document list
 const initialDocuments = [
-  { id: 1, name: "Relatório Q1 2023", date: "2023-03-31" },
-  { id: 2, name: "Plano Estratégico 2023", date: "2023-01-15" },
+  { id: 1, name: "Contas a Pagar", date: "2023-03-31" },
+  { id: 2, name: "Pagamento de benefícios", date: "2023-01-15" },
 ]
 
 export default function ProfileScreen() {

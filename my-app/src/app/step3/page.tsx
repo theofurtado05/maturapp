@@ -1,5 +1,5 @@
 "use client"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
@@ -79,9 +79,22 @@ const questions = [
 export default function SpecificQuestionsScreen() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState({})
+  const [totalPoints, setTotalPoints] = useState<number>(0)
+
+  useEffect(() => {
+    // Recupera os pontos do localStorage ao carregar a página
+    const savedPoints = localStorage.getItem('totalPoints')
+    setTotalPoints(savedPoints ? parseInt(savedPoints, 10) : 0)
+  }, [])
+
+  useEffect(() => {
+    // Salva os pontos no localStorage sempre que totalPoints mudar
+    localStorage.setItem('totalPoints', totalPoints.toString())
+  }, [totalPoints])
 
   const onAnswer = (value: string) => {
     setAnswers({ ...answers, [questions[currentQuestion].id]: value })
+    setTotalPoints(totalPoints + parseInt(value))
   }
 
   const onNext = () => {
@@ -89,6 +102,7 @@ export default function SpecificQuestionsScreen() {
       setCurrentQuestion(currentQuestion + 1)
     } else {
       console.log("Respostas finais:", answers)
+      console.log("Total de pontos:", totalPoints)
       window.location.href = '/final'
     }
   }

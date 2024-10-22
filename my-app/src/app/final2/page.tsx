@@ -1,44 +1,30 @@
 "use client"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowLeft, ArrowRight, Share2, PlayCircle } from 'lucide-react'
+import { Share2, PlayCircle } from 'lucide-react'
 import Menu from '../_components/menu'
 import Header from '../_components/header'
 
+
 export default function NextStepsScreen() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false)
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
+  const [videoUrl, setVideoUrl] = useState("")
 
-  const videos = [
-    "https://www.youtube.com/embed/11KwSkjwAyI?si=w7avf1OJtuI9mouw",
-    "https://www.youtube.com/embed/ERSUPHFbGU4?si=c-vgSODRL7HGy789",
-    "https://www.youtube.com/embed/oTlVrXg6DCs?si=L9vX0sjViFuVxc4R",
-    "https://www.youtube.com/embed/WeGvfZtPdug?si=tkZEFQ8Q30SATEU0",
-    "https://www.youtube.com/embed/sxguufzRJXE?si=4-yns8Kis3i3wJ47",
-    "https://www.youtube.com/embed/7GXHPRxGQ2A?si=X3L6gb17OkDsj5uB"
-  ]
+  useEffect(() => {
+    const video = localStorage.getItem('video')
+    if (video) {
+      setVideoUrl(video)
+    }
+  }, [])
 
   const onPlayVideo = () => {
     setIsVideoPlaying(true)
   }
 
-  const nextVideo = () => {
-    if (currentVideoIndex < videos.length - 1) {
-      setCurrentVideoIndex(currentVideoIndex + 1)
-      setIsVideoPlaying(false) // Reset video playing state
-    }
-  }
-
-  const previousVideo = () => {
-    if (currentVideoIndex > 0) {
-      setCurrentVideoIndex(currentVideoIndex - 1)
-      setIsVideoPlaying(false) // Reset video playing state
-    }
-  }
-
   const onBackToStart = () => {
     console.log("Voltar para o início")
+    window.location.href = "/";
   }
 
   const onShare = () => {
@@ -60,7 +46,7 @@ export default function NextStepsScreen() {
             <div className="relative bg-gray-200 rounded-xl overflow-hidden">
               {isVideoPlaying ? (
                 <iframe
-                  src={videos[currentVideoIndex]}
+                  src={videoUrl}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="w-full h-[200px]"
@@ -77,28 +63,10 @@ export default function NextStepsScreen() {
               )}
             </div>
 
-            <div className="flex justify-between items-center space-x-4">
-              <Button
-                onClick={previousVideo}
-                disabled={currentVideoIndex === 0}
-                className="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
-              >
-                <ArrowLeft className="w-6 h-6" />
-              </Button>
-              <span className="text-gray-700">{`Vídeo ${currentVideoIndex + 1} de ${videos.length}`}</span>
-              <Button
-                onClick={nextVideo}
-                disabled={currentVideoIndex === videos.length - 1}
-                className="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
-              >
-                <ArrowRight className="w-6 h-6" />
-              </Button>
-            </div>
-
             <div className="space-y-4">
               <h3 className="text-xl font-semibold text-gray-800">Como avançar para o próximo nível</h3>
               <p className="text-gray-600">
-                Estes vídeos explicativos fornecem orientações detalhadas sobre como sua organização pode 
+                Este vídeo explicativo fornece orientações detalhadas sobre como sua organização pode 
                 progredir para o próximo nível de maturidade. Assista para obter insights valiosos e 
                 estratégias práticas para melhorar seus processos.
               </p>
