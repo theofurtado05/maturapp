@@ -22,6 +22,12 @@ export default function MobileApp() {
   const onContinue = (area) => {
     console.log('Área selecionada:', area)
     window.location.href = '/step2'
+    localStorage.removeItem('video')
+    localStorage.removeItem('totalPoints')
+    localStorage.removeItem('description')
+    localStorage.removeItem('title')
+    localStorage.removeItem('link')
+    localStorage.removeItem('level')
     // Aqui você implementaria a lógica para avançar para a próxima tela
   }
 
