@@ -47,7 +47,7 @@ export default function DiagnosisResultScreen() {
 
   //@ts-ignore
   const getMaturityLevel = (points) => {
-    if (points >= 6 && points <= 10) {
+    if (points >= 0 && points <= 10) {
       localStorage.setItem('video', "https://www.youtube.com/embed/11KwSkjwAyI?si=Nw6294PAqUl1cjgR")
       return {
         level: 1,
