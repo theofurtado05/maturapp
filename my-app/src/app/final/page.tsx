@@ -83,7 +83,10 @@ export default function DiagnosisResultScreen() {
     }
   }
 
-  const [result, setResult] = useState<any>({})
+  const [result, setResult] = useState<any>({
+    title: "Calculando...",
+    description: "Estamos calculando seu resultado, por favor aguarde..."
+  })
   useEffect(() => {
     const result = getMaturityLevel(totalPoints)
     setResult(result)
